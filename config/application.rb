@@ -32,6 +32,15 @@ module ComfortableMexicanSofa
 
     # Making sure we don't load our dev routes as part of the engine
     config.paths["config/routes.rb"] << "config/cms_routes.rb"
+    
+    config.active_record.yaml_column_permitted_classes = [
+      Symbol,
+      Time,
+      ActiveSupport::TimeWithZone,
+      ActiveSupport::TimeZone,
+      ActiveSupport::HashWithIndifferentAccess,
+      ActionController::Parameters
+    ]
 
     config.i18n.enforce_available_locales = true
 
