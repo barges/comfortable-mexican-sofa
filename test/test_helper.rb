@@ -1,3 +1,4 @@
+# coding: utf-8
 # frozen_string_literal: true
 
 ENV["RAILS_ENV"] = "test"
@@ -61,6 +62,12 @@ class ActiveSupport::TestCase
     end
     ComfortableMexicanSofa::AccessControl::AdminAuthentication.username = "username"
     ComfortableMexicanSofa::AccessControl::AdminAuthentication.password = "password"
+
+    root = Rails.root
+    FileUtils.mkdir_p "#{root}/tmp/storage/12/3a"
+    FileUtils.mkdir_p "#{root}/tmp/storage/45/6d"
+    FileUtils.cp "#{root}/test/fixtures/files/image.jpg", "#{root}/tmp/storage/12/3a/123abc"
+    FileUtils.cp "#{root}/test/fixtures/files/image.jpg", "#{root}/tmp/storage/45/6d/456def"
   end
 
   def reset_locale
@@ -71,9 +78,9 @@ class ActiveSupport::TestCase
   # Example usage:
   #   assert_has_errors_on @record, :field_1, :field_2
   def assert_has_errors_on(record, *fields)
-    unmatched = record.errors.keys - fields.flatten
+    unmatched = record.errors.attribute_names - fields.flatten
     assert unmatched.blank?, "#{record.class} has errors on '#{unmatched.join(', ')}'"
-    unmatched = fields.flatten - record.errors.keys
+    unmatched = fields.flatten - record.errors.attribute_names
     assert unmatched.blank?, "#{record.class} doesn't have errors on '#{unmatched.join(', ')}'"
   end
 
@@ -126,7 +133,7 @@ class ActionDispatch::IntegrationTest
       ComfortableMexicanSofa::AccessControl::AdminAuthentication.password
     )
     options[:headers] = headers
-    send(method, path, options)
+    send(method, path, **options)
   end
 
   def with_routing
@@ -238,7 +245,12 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   Capybara.enable_aria_label = true
 
-  driven_by :selenium, using: :headless_chrome, screen_size: [1400, 1400]
+  Capybara.register_driver :chrome_headless do |app|
+    options = Selenium::WebDriver::Chrome::Options.new(args: %w[headless screen-size=1400,1400])
+    Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
+  end
+  
+  driven_by :chrome_headless
 
   teardown :assert_no_javascript_errors
 
@@ -251,7 +263,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
   end
 
   def assert_no_javascript_errors
-    assert_empty page.driver.browser.manage.logs.get(:browser)
+    assert_empty page.driver.browser.logs.get(:browser)
       .select { |e| e.level == "SEVERE" && e.message.present? }.map(&:message).to_a
   end
 

@@ -3,11 +3,13 @@ default:
   filename: default.jpg
   content_type: image/jpg
   byte_size: 12345
-  checksum: 123abc
+  checksum: AorYOTeSB4qdP9kzQ6M4ew==
+  service_name: 'test'
 
 fragment:
   key: 456def
   filename: fragment.jpg
   content_type: image/jpg
   byte_size: 12345
-  checksum: 456def
+  checksum: AorYOTeSB4qdP9kzQ6M4ew==
+  service_name: 'test'

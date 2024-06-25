@@ -1,3 +1,4 @@
+# coding: utf-8
 # frozen_string_literal: true
 
 require_relative "../test_helper"
@@ -123,7 +124,7 @@ class CmsPageTest < ActiveSupport::TestCase
           fragments_attributes: [{
             identifier: "test",
             tag:        "file",
-            files:      [fixture_file_upload("files/image.jpg", "image/jpeg")]
+            files:      [fixture_file_upload("image.jpg", "image/jpeg")]
           }]
         )
       )
@@ -146,8 +147,8 @@ class CmsPageTest < ActiveSupport::TestCase
               identifier: "test",
               tag:        "files",
               files:      [
-                fixture_file_upload("files/image.jpg", "image/jpeg"),
-                fixture_file_upload("files/document.pdf", "application/pdf")
+                fixture_file_upload("image.jpg", "image/jpeg"),
+                fixture_file_upload("document.pdf", "application/pdf")
               ]
             }]
           )
@@ -223,7 +224,7 @@ class CmsPageTest < ActiveSupport::TestCase
         fragments_attributes: [{
           identifier: "file",
           tag:        "file",
-          files:      fixture_file_upload("files/document.pdf", "application/pdf")
+          files:      fixture_file_upload("document.pdf", "application/pdf")
         }]
       )
       assert_equal "document.pdf", comfy_cms_fragments(:file).attachments.first.filename.to_s
