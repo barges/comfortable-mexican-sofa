@@ -13,7 +13,7 @@ module ComfortableMexicanSofa
 
     require_relative "../lib/comfortable_mexican_sofa"
 
-    config.load_defaults 5.2
+    config.load_defaults 7.1
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -32,7 +32,7 @@ module ComfortableMexicanSofa
 
     # Making sure we don't load our dev routes as part of the engine
     config.paths["config/routes.rb"] << "config/cms_routes.rb"
-    
+
     config.active_record.yaml_column_permitted_classes = [
       Symbol,
       Time,
