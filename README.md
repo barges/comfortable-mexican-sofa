@@ -1,6 +1,6 @@
 # ComfortableMexicanSofa
 
-ComfortableMexicanSofa is a powerful Ruby on Rails 5.2+ CMS (Content Management System) Engine
+ComfortableMexicanSofa is a powerful Ruby on Rails 7.1+ CMS (Content Management System) Engine
 
 [![Gem Version](https://img.shields.io/gem/v/comfortable_mexican_sofa.svg?style=flat)](http://rubygems.org/gems/comfortable_mexican_sofa)
 [![Gem Downloads](https://img.shields.io/gem/dt/comfortable_mexican_sofa.svg?style=flat)](http://rubygems.org/gems/comfortable_mexican_sofa)
@@ -10,7 +10,7 @@ ComfortableMexicanSofa is a powerful Ruby on Rails 5.2+ CMS (Content Management 
 
 ## Features
 
-* Simple drop-in integration with Rails 5.2+ apps with minimal configuration
+* Simple drop-in integration with Rails 7.1+ apps with minimal configuration
 * CMS stays away from the rest of your application
 * Powerful page templating capability using [Content Tags](https://github.com/comfy/comfortable-mexican-sofa/wiki/Docs:-Content-Tags)
 * [Multiple Sites](https://github.com/comfy/comfortable-mexican-sofa/wiki/Docs:-Sites) from a single installation
@@ -30,8 +30,10 @@ ComfortableMexicanSofa is a powerful Ruby on Rails 5.2+ CMS (Content Management 
 Add gem definition to your Gemfile:
 
 ```ruby
-gem "comfortable_mexican_sofa", "~> 2.0.0"
+gem "comfortable_mexican_sofa", "~> 2.1.0"
 ```
+
+**Note:** This version requires Ruby 3.0+ and Rails 7.1+. If you're upgrading from an older version, see the [Rails 7.1 Migration Guide](RAILS_7_1_MIGRATION_GUIDE.md).
 
 Then from the Rails project's root run:
 
@@ -82,15 +84,20 @@ If you want to add a Blog functionality to your app take a look at
 
 ![Admin Area Preview](doc/preview.jpg)
 
-#### Old Versions
+#### Version Compatibility
 
-CMS for Rails 5.1 doesn't have published gem, but you may use [rails 5.1 branch](https://github.com/comfy/comfortable-mexican-sofa/tree/rails5.1) directly.
+**Current Version (Rails 7.1+):**
+- Ruby: 3.0+
+- Rails: 7.1+
+- Gem: 2.1.0+
 
-If you want to use CMS version 1.12 on Rails 5.2 use [1.13 branch](https://github.com/comfy/comfortable-mexican-sofa/tree/1.13) directly.
+**Previous Versions:**
+- Rails 5.2: Use gem version [2.0.19](https://rubygems.org/gems/comfortable_mexican_sofa/versions/2.0.19)
+- Rails 5.1: Use [rails 5.1 branch](https://github.com/comfy/comfortable-mexican-sofa/tree/rails5.1) directly
+- Rails 4.2 and 5.0: Use gem version [1.12.10](https://rubygems.org/gems/comfortable_mexican_sofa/versions/1.12.10)
+- Rails 3.0: Use gem version [1.8.5](https://rubygems.org/gems/comfortable_mexican_sofa/versions/1.8.5)
 
-With Rails 4.2 and 5.0 use gem version [1.12.10](https://rubygems.org/gems/comfortable_mexican_sofa/versions/1.12.10)
-
-With Rails 3.0 use gem version [1.8.5](https://rubygems.org/gems/comfortable_mexican_sofa/versions/1.8.5)
+**Migrating to Rails 7.1?** See the [Rails 7.1 Migration Guide](RAILS_7_1_MIGRATION_GUIDE.md) for detailed instructions.
 
 [CHANGELOG](//github.com/comfy/comfortable-mexican-sofa/releases) is documented
 in Github releases.

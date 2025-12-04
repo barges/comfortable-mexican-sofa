@@ -24,8 +24,12 @@ defined?(ComfortableMexicanSofa::Application) && ComfortableMexicanSofa::Applica
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false
 
+  # Enable asset compilation in tests so .sass files can be processed
+  config.assets.compile = true
+  config.assets.digest = false
+
   # Raise exceptions instead of rendering exception templates.
-  config.action_dispatch.show_exceptions = false
+  config.action_dispatch.show_exceptions = :none
 
   # Disable request forgery protection in test environment.
   config.action_controller.allow_forgery_protection = false

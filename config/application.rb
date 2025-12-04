@@ -2,6 +2,16 @@
 
 require_relative "boot"
 
+# Prevent sassc-rails from being loaded (we use sassc directly for sprockets, not sassc-rails)
+module Kernel
+  alias_method :require_without_sassc_rails_block, :require unless method_defined?(:require_without_sassc_rails_block)
+
+  def require(name)
+    return false if name == "sassc/rails" || name == "sassc/rails/railtie"
+    require_without_sassc_rails_block(name)
+  end
+end
+
 require "rails/all"
 
 # Require the gems listed in Gemfile, including any gems
@@ -39,7 +49,8 @@ module ComfortableMexicanSofa
       ActiveSupport::TimeWithZone,
       ActiveSupport::TimeZone,
       ActiveSupport::HashWithIndifferentAccess,
-      ActionController::Parameters
+      ActionController::Parameters,
+      ActiveSupport::SafeBuffer
     ]
 
     config.i18n.enforce_available_locales = true
