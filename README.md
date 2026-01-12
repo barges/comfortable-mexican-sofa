@@ -1,6 +1,6 @@
 # ComfortableMexicanSofa
 
-ComfortableMexicanSofa is a powerful Ruby on Rails 7.1+ CMS (Content Management System) Engine
+ComfortableMexicanSofa is a powerful Ruby on Rails 7.2+ CMS (Content Management System) Engine
 
 [![Gem Version](https://img.shields.io/gem/v/comfortable_mexican_sofa.svg?style=flat)](http://rubygems.org/gems/comfortable_mexican_sofa)
 [![Gem Downloads](https://img.shields.io/gem/dt/comfortable_mexican_sofa.svg?style=flat)](http://rubygems.org/gems/comfortable_mexican_sofa)
@@ -10,7 +10,7 @@ ComfortableMexicanSofa is a powerful Ruby on Rails 7.1+ CMS (Content Management 
 
 ## Features
 
-* Simple drop-in integration with Rails 7.1+ apps with minimal configuration
+* Simple drop-in integration with Rails 7.2+ apps with minimal configuration
 * CMS stays away from the rest of your application
 * Powerful page templating capability using [Content Tags](https://github.com/comfy/comfortable-mexican-sofa/wiki/Docs:-Content-Tags)
 * [Multiple Sites](https://github.com/comfy/comfortable-mexican-sofa/wiki/Docs:-Sites) from a single installation
@@ -33,7 +33,7 @@ Add gem definition to your Gemfile:
 gem "comfortable_mexican_sofa", "~> 2.1.0"
 ```
 
-**Note:** This version requires Ruby 3.0+ and Rails 7.1+. If you're upgrading from an older version, see the [Rails 7.1 Migration Guide](RAILS_7_1_MIGRATION_GUIDE.md).
+**Note:** This version requires Ruby 3.3.10+ and Rails 7.2+. If you're upgrading from an older version, see the [Rails 7.1 Migration Guide](RAILS_7_1_MIGRATION_GUIDE.md) for Rails 7.1 migration, and check Rails 7.2 release notes for additional changes.
 
 Then from the Rails project's root run:
 
@@ -86,10 +86,10 @@ If you want to add a Blog functionality to your app take a look at
 
 #### Version Compatibility
 
-**Current Version (Rails 7.1+):**
-- Ruby: 3.0+
-- Rails: 7.1+
-- Gem: 2.1.0+
+**Current Version (Rails 7.2+):**
+- Ruby: 3.3.10+
+- Rails: 7.2+
+- Gem: 2.2.0+
 
 **Previous Versions:**
 - Rails 5.2: Use gem version [2.0.19](https://rubygems.org/gems/comfortable_mexican_sofa/versions/2.0.19)
@@ -97,7 +97,7 @@ If you want to add a Blog functionality to your app take a look at
 - Rails 4.2 and 5.0: Use gem version [1.12.10](https://rubygems.org/gems/comfortable_mexican_sofa/versions/1.12.10)
 - Rails 3.0: Use gem version [1.8.5](https://rubygems.org/gems/comfortable_mexican_sofa/versions/1.8.5)
 
-**Migrating to Rails 7.1?** See the [Rails 7.1 Migration Guide](RAILS_7_1_MIGRATION_GUIDE.md) for detailed instructions.
+**Migrating to Rails 7.2?** See the [Rails 7.1 Migration Guide](RAILS_7_1_MIGRATION_GUIDE.md) for Rails 7.1 migration details, and check [Rails 7.2 Release Notes](https://guides.rubyonrails.org/7_2_release_notes.html) for additional changes.
 
 [CHANGELOG](//github.com/comfy/comfortable-mexican-sofa/releases) is documented
 in Github releases.

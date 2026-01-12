@@ -24,7 +24,7 @@ class Comfy::Cms::File < ActiveRecord::Base
   before_validation :assign_label, on: :create
   before_create :assign_position
   # active_storage attachment behavior changed in rails 6 - see PR#892 for details
-  # Rails 7.1 requires before_save for attachments
+  # Rails 7.2 requires before_save for attachments
   before_save :process_attachment
 
   # -- Validations -------------------------------------------------------------

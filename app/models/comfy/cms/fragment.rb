@@ -12,7 +12,7 @@ class Comfy::Cms::Fragment < ActiveRecord::Base
 
   # -- Callbacks ---------------------------------------------------------------
   # active_storage attachment behavior changed in rails 6 - see PR#892 for details
-  # Rails 7.1 requires before_save for attachments
+  # Rails 7.2 requires before_save for attachments
   before_save :remove_attachments, :add_attachments
 
   # -- Relationships -----------------------------------------------------------
