@@ -20,7 +20,7 @@ require_relative "../config/environment"
 
 require "rails/test_help"
 require "rails/generators"
-require "mocha/setup"
+require "mocha/minitest"
 
 Rails.backtrace_cleaner.remove_silencers!
 
@@ -249,7 +249,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     options = Selenium::WebDriver::Chrome::Options.new(args: %w[headless screen-size=1400,1400])
     Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
   end
-  
+
   driven_by :chrome_headless
 
   teardown :assert_no_javascript_errors

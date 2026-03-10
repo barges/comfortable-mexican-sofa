@@ -150,7 +150,11 @@ class FormBuilderTest < ActionView::TestCase
 
     attachment = active_storage_attachments(:file)
     attachment_url  = view.url_for(attachment)
-    thumb_url       = view.url_for(attachment.variant(combine_options: Comfy::Cms::File::VARIANT_SIZE[:thumb]))
+    thumb_url       = if attachment.variable?
+                        view.url_for(attachment.variant(transform: Comfy::Cms::File::VARIANT_SIZE[:thumb]))
+                      else
+                        attachment_url
+                      end
 
     expected = <<~HTML
       <div class="form-group row">
@@ -197,7 +201,11 @@ class FormBuilderTest < ActionView::TestCase
 
     attachment = active_storage_attachments(:file)
     attachment_url  = view.url_for(attachment)
-    thumb_url       = view.url_for(attachment.variant(combine_options: Comfy::Cms::File::VARIANT_SIZE[:thumb]))
+    thumb_url       = if attachment.variable?
+                        view.url_for(attachment.variant(transform: Comfy::Cms::File::VARIANT_SIZE[:thumb]))
+                      else
+                        attachment_url
+                      end
 
     expected = <<~HTML
       <div class="form-group row">

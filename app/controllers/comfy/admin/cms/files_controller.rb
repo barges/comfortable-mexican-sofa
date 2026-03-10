@@ -23,7 +23,12 @@ class Comfy::Admin::Cms::FilesController < Comfy::Admin::Cms::BaseController
         case params[:type]
         when "image"
           file_scope.with_images.collect do |file|
-            { thumb: url_for(file.attachment.variant(combine_options: Comfy::Cms::File::VARIANT_SIZE[:redactor])),
+            thumb_url = if file.attachment.variable?
+                          url_for(file.attachment.variant(transform: Comfy::Cms::File::VARIANT_SIZE[:redactor]))
+                        else
+                          url_for(file.attachment)
+                        end
+            { thumb: thumb_url,
               image: url_for(file.attachment),
               title: file.label }
           end
@@ -83,9 +88,9 @@ class Comfy::Admin::Cms::FilesController < Comfy::Admin::Cms::BaseController
   rescue ActiveRecord::RecordInvalid
     case params[:source]
     when "plupload"
-      render body: @file.errors.full_messages.to_sentence, status: :unprocessable_entity
+      render body: @file.errors.full_messages.to_sentence, status: :unprocessable_content
     when "redactor"
-      render body: nil, status: :unprocessable_entity
+      render body: nil, status: :unprocessable_content
     else
       flash.now[:danger] = I18n.t("comfy.admin.cms.files.creation_failure")
       render action: :new

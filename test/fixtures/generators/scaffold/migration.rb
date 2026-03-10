@@ -1,4 +1,4 @@
-class CreateFoos < ActiveRecord::Migration[5.2]
+class CreateFoos < ActiveRecord::Migration[7.2]
 
   def change
     create_table :foos do |t|
